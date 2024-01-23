@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %} {% if form.errors %}
+<div class="alert alert-dark alert-dismissible fade show" role="alert">
+  <strong>There was an error with your registration. Please check the criteria.</strong>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endif %}
+
+<h1>Register</h1>
+<br />
+<form action="{% url 'register_user' %}" method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <br /><br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+  
+  <br /><br />
+    <p1>Already have an account, </p1>
+    <a href="{% url 'login' %}">Login Here</a>
+  {% endblock %}
+</form>

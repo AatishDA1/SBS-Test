@@ -1,45 +1,42 @@
-{% extends 'base.html' %} {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <div class="col-lg-8 mx-auto p-3 py-md-5 text-center">
-      <br />
-      <main>
-        <h1>SynBio Source</h1>
-        <p class="fs-5">
-          Welcome to SynBio Source, a repository for Synthetic Biology Datasets.
-        </p>
-        <p class="fs-5">Hit the button below to start exploring.</p>
-        {% if user.is_authenticated %}
-            <div class="mb-5">
-            <a class="btn btn-primary btn-sm px-2" href="{% url 'member_zone' %}"
-                >Member Zone</a
-            >
-            </div>
-        {% else %}
-            <div class="mb-5">
-            <a class="btn btn-primary btn-sm px-2 " href="{% url 'login' %}"
-                >Login</a
-            >
-            </div>
-        {% endif %}
+{% extends 'base.html' %}
 
-        <img src="https://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid" alt="beakers">
-  
-      <footer class="pt-5 my-5 text-muted border-top">
-        Created by Aatish Dhawan &middot; 2024
-      </footer>
-    </div>
+{% block content %}
+<style>
+  .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background: url('https://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -1;
+  }
 
-    <script
-      src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+  .centered-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+</style>
+
+<div class="background-image"></div>
+
+<div class="centered-content">
+  <h1>SynBio Source</h1>
+  <p class="fs-5">
+    Welcome to SynBio Source, a repository for Synthetic Biology Datasets.
+  </p>
+  <p class="fs-5">Hit the button below to start exploring.</p>
+  {% if user.is_authenticated %}
+    <a class="btn btn-primary btn-sm px-2" href="{% url 'member_zone' %}">Member Zone</a>
+  {% else %}
+    <a class="btn btn-primary btn-sm px-2" href="{% url 'login' %}">Login</a>
+  {% endif %}
+</div>
+
 {% endblock %}

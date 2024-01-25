@@ -13,7 +13,7 @@ def about(request):
     return render(request, 'about.html', {})
 
 def member_zone(request):
-    # Fetching data
+    # Gets the data.
     result = []
     try:
         cursor = cnx.cursor()
@@ -24,3 +24,16 @@ def member_zone(request):
     except:
         pass
     return render(request, 'member_zone.html', {"data":result})
+
+def available_datasets(request):
+    # Gets the data.
+    result = []
+    try:
+        cursor = cnx.cursor()
+        cursor.execute("""
+            SELECT * FROM licensedatav2.dataset_registry;
+        """)
+        result = cursor.fetchall()
+    except:
+        pass
+    return render(request, 'available_datasets.html', {"data":result})

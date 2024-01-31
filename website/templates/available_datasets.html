@@ -65,11 +65,17 @@
 <!-- Style -->
 <style>
   .bootstrap-table .pagination-detail {
-    margin-bottom: 10px; /* Adjust the space below the items per page dropdown */
+    margin-bottom: 10px;
   }
 
   .bootstrap-table .pagination {
-    margin-top: 10px; /* Adjust the space above the pagination controls */
+    margin-top: 10px;
+  }
+
+  .table-responsive {
+    overflow-x: auto; /* Enables horizontal scrolling.*/
+    width: 100%;
+    margin-bottom: 15px;
   }
 </style>
 
@@ -92,63 +98,65 @@
   </button>
   <br />
   <br />
-  <table
-    id="dataset_registry_table"
-    border="1"
-    data-toggle="table"
-    data-sortable="true"
-    data-pagination="true"
-    data-page-size="10"
-    data-page-list="[10, 25, 50, 100, ALL]"
-    data-search="true"
-    class="table table-hover sortable table-sm"
-  >
-    <thead>
-      <tr>
-        <th scope="col" data-sortable="true">Dataset ID</th>
-        <th scope="col" data-sortable="true">Dataset Name</th>
-        <th scope="col" data-sortable="true">Total Entries</th>
-        <th scope="col" data-sortable="true">Corrupt?</th>
-        <th scope="col" data-sortable="true">Corruption Percentage</th>
-        <th scope="col" data-sortable="true">Creation Time</th>
-        <th scope="col" data-sortable="true">First Name Corruption</th>
-        <th scope="col" data-sortable="true">Last Name Corruption</th>
-        <th scope="col" data-sortable="true">Date of Birth Corruption</th>
-        <th scope="col" data-sortable="true">Place of Birth Corruption</th>
-        <th scope="col" data-sortable="true">Gender Corruption</th>
-        <th scope="col" data-sortable="true">Date of Issue Corruption</th>
-        <th scope="col" data-sortable="true">Date of Expiry Corruption</th>
-        <th scope="col" data-sortable="true">Issuing Authority Corruption</th>
-        <th scope="col" data-sortable="true">License Number Corruption</th>
-        <th scope="col" data-sortable="true">Address Corruption</th>
-        <th scope="col" data-sortable="true">Additional Metadata</th>
-        <th data-checkbox="true"></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for entry in data %}
-      <tr>
-        <td>{{ entry.0 }}</td>
-        <td>{{ entry.1 }}</td>
-        <td>{{ entry.2 }}</td>
-        <td>{{ entry.3 }}</td>
-        <td>{{ entry.4 }}</td>
-        <td>{{ entry.5 }}</td>
-        <td>{{ entry.6 }}</td>
-        <td>{{ entry.7 }}</td>
-        <td>{{ entry.8 }}</td>
-        <td>{{ entry.9 }}</td>
-        <td>{{ entry.10 }}</td>
-        <td>{{ entry.11 }}</td>
-        <td>{{ entry.12 }}</td>
-        <td>{{ entry.13 }}</td>
-        <td>{{ entry.14 }}</td>
-        <td>{{ entry.15 }}</td>
-        <td>{{ entry.16 }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table
+      id="dataset_registry_table"
+      border="1"
+      data-toggle="table"
+      data-sortable="true"
+      data-pagination="true"
+      data-page-size="10"
+      data-page-list="[10, 25, 50, 100, ALL]"
+      data-search="true"
+      class="table table-hover sortable table-sm"
+    >
+      <thead>
+        <tr>
+          <th scope="col" data-sortable="true">Dataset ID</th>
+          <th scope="col" data-sortable="true">Dataset Name</th>
+          <th scope="col" data-sortable="true">Total Entries</th>
+          <th scope="col" data-sortable="true">Corrupt?</th>
+          <th scope="col" data-sortable="true">Corruption Percentage</th>
+          <th scope="col" data-sortable="true">Creation Time</th>
+          <th scope="col" data-sortable="true">First Name Corruption</th>
+          <th scope="col" data-sortable="true">Last Name Corruption</th>
+          <th scope="col" data-sortable="true">Date of Birth Corruption</th>
+          <th scope="col" data-sortable="true">Place of Birth Corruption</th>
+          <th scope="col" data-sortable="true">Gender Corruption</th>
+          <th scope="col" data-sortable="true">Date of Issue Corruption</th>
+          <th scope="col" data-sortable="true">Date of Expiry Corruption</th>
+          <th scope="col" data-sortable="true">Issuing Authority Corruption</th>
+          <th scope="col" data-sortable="true">License Number Corruption</th>
+          <th scope="col" data-sortable="true">Address Corruption</th>
+          <th scope="col" data-sortable="true">Additional Metadata</th>
+          <th data-checkbox="true"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in data %}
+        <tr>
+          <td>{{ entry.0 }}</td>
+          <td>{{ entry.1 }}</td>
+          <td>{{ entry.2 }}</td>
+          <td>{{ entry.3 }}</td>
+          <td>{{ entry.4 }}</td>
+          <td>{{ entry.5 }}</td>
+          <td>{{ entry.6 }}</td>
+          <td>{{ entry.7 }}</td>
+          <td>{{ entry.8 }}</td>
+          <td>{{ entry.9 }}</td>
+          <td>{{ entry.10 }}</td>
+          <td>{{ entry.11 }}</td>
+          <td>{{ entry.12 }}</td>
+          <td>{{ entry.13 }}</td>
+          <td>{{ entry.14 }}</td>
+          <td>{{ entry.15 }}</td>
+          <td>{{ entry.16 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
   <script>
     $(document).ready(function () {
       $("#dataset_registry_table").bootstrapTable();

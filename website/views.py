@@ -18,7 +18,7 @@ def member_zone(request):
     try:
         cursor = cnx.cursor()
         cursor.execute("""
-            SELECT id, `First Name`, `Last Name`, `Date of Birth`, `Place of Birth`, `Gender`, `Date of Issue`, `Date of Expiry`, `Issuing Authority`, `License Number`, `Address`, `Dataset` FROM licensedatav2.license_data;
+            SELECT * FROM licensedatav2.license_data;
         """)
         result = cursor.fetchall()
     except:

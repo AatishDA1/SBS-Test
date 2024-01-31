@@ -3,7 +3,33 @@
 <script>
   function exportData() {
     var selectedRows = $("#license_data_table").bootstrapTable("getSelections");
-
+    console.log(selectedRows)
+    selectedRows=selectedRows.map((obj)=>(
+      {
+        0:obj['0'],
+        1:obj['1'],
+        2:obj['2'],
+        3:obj['3'],
+        4:obj['4'],
+        5:obj['5'],
+        6:obj['6'],
+        7:obj['7'],
+        8:obj['8'],
+        9:obj['9'],
+        10:obj['10'],
+        11:obj['11'],
+        12:obj['12'],
+        13:obj['13'],
+        14:obj['14'],
+        15:obj['15'],
+        16:obj['16'],
+        17:obj['17'],
+        18:obj['18'],
+        19:obj['19'],
+        20:obj['20'],
+        21:obj['21'],
+      }
+    ))
     // Makes sure some rows are selected.
     if (selectedRows.length === 0) {
       alert("Please select at least one row to export.");
@@ -14,15 +40,25 @@
     var headers = [
       "ID",
       "First Name",
+      "First Name Corruption",
       "Last Name",
+      "Last Name Corruption",
       "Date of Birth",
+      "Date of Birth Corruption",
       "Place of Birth",
+      "Place of Birth Corruption",
       "Gender",
+      "Gender Corruption",
       "Date of Issue",
+      "Date of Issue Corruption",
       "Date of Expiry",
+      "Date of Expiry Corruption",
       "Issuing Authority",
+      "Issuing Authority Corruption",
       "License Number",
+      "License Number Corruption",
       "Address",
+      "Address Corruption",
       "Dataset",
     ];
 
@@ -58,11 +94,43 @@
 <!-- Style -->
 <style>
   .bootstrap-table .pagination-detail {
-    margin-bottom: 10px; /* Adjust the space below the items per page dropdown */
+    margin-bottom: 10px; 
   }
 
   .bootstrap-table .pagination {
-    margin-top: 10px; /* Adjust the space above the pagination controls */
+    margin-top: 10px; 
+  }
+
+  .table-responsive {
+    overflow-x: auto; 
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  #license_data_table thead tr th:nth-child(3),
+  #license_data_table thead tr th:nth-child(5),
+  #license_data_table thead tr th:nth-child(7),
+  #license_data_table thead tr th:nth-child(9),
+  #license_data_table thead tr th:nth-child(11),
+  #license_data_table thead tr th:nth-child(13),
+  #license_data_table thead tr th:nth-child(15),
+  #license_data_table thead tr th:nth-child(17),
+  #license_data_table thead tr th:nth-child(19),
+  #license_data_table thead tr th:nth-child(21){
+    display:none;
+  }
+
+  #license_data_table tbody tr td:nth-child(3),
+  #license_data_table tbody tr td:nth-child(5),
+  #license_data_table tbody tr td:nth-child(7),
+  #license_data_table tbody tr td:nth-child(9),
+  #license_data_table tbody tr td:nth-child(11),
+  #license_data_table tbody tr td:nth-child(13),
+  #license_data_table tbody tr td:nth-child(15),
+  #license_data_table tbody tr td:nth-child(17),
+  #license_data_table tbody tr td:nth-child(19),
+  #license_data_table tbody tr td:nth-child(21){
+    display:none;
   }
 </style>
 
@@ -86,53 +154,95 @@
   </button>
   <br />
   <br />
-  <table
-    id="license_data_table"
-    border="1"
-    data-toggle="table"
-    data-sortable="true"
-    data-pagination="true"
-    data-page-size="10"
-    data-page-list="[10, 25, 50, 100, ALL]"
-    data-search="true"
-    class="table table-hover sortable"
-  >
-    <thead>
-      <tr>
-        <th scope="col" data-sortable="true">ID</th>
-        <th scope="col" data-sortable="true">First Name</th>
-        <th scope="col" data-sortable="true">Last Name</th>
-        <th scope="col" data-sortable="true">Date of Birth</th>
-        <th scope="col" data-sortable="true">Place of Birth</th>
-        <th scope="col" data-sortable="true">Gender</th>
-        <th scope="col" data-sortable="true">Date of Issue</th>
-        <th scope="col" data-sortable="true">Date of Expiry</th>
-        <th scope="col" data-sortable="true">Issuing Authority</th>
-        <th scope="col" data-sortable="true">License Number</th>
-        <th scope="col" data-sortable="true">Address</th>
-        <th scope="col" data-sortable="true">Dataset</th>
-        <th data-checkbox="true"></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for entry in data %}
-      <tr>
-        <td>{{ entry.0 }}</td>
-        <td>{{ entry.1 }}</td>
-        <td>{{ entry.2 }}</td>
-        <td>{{ entry.3 }}</td>
-        <td>{{ entry.4 }}</td>
-        <td>{{ entry.5 }}</td>
-        <td>{{ entry.6 }}</td>
-        <td>{{ entry.7 }}</td>
-        <td>{{ entry.8 }}</td>
-        <td>{{ entry.9 }}</td>
-        <td>{{ entry.10 }}</td>
-        <td>{{ entry.11 }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table
+      id="license_data_table"
+      border="1"
+      data-toggle="table"
+      data-sortable="true"
+      data-pagination="true"
+      data-page-size="10"
+      data-page-list="[10, 25, 50, 100, ALL]"
+      data-search="true"
+      class="table table-hover sortable"
+    >
+      <thead>
+        <tr>
+          <th scope="col" data-sortable="true">ID</th>
+          <th scope="col" data-sortable="true">First Name</th>
+          <th scope="col">First Name Corruption</th>
+          <th scope="col" data-sortable="true">Last Name</th>
+          <th scope="col">Last Name Corruption</th>
+          <th scope="col" data-sortable="true">Date of Birth</th>
+          <th scope="col">Date of Birth Corruption</th>
+          <th scope="col" data-sortable="true">Place of Birth</th>
+          <th scope="col">Place of Birth Corruption</th>
+          <th scope="col" data-sortable="true">Gender</th>
+          <th scope="col">Gender Corruption</th>
+          <th scope="col" data-sortable="true">Date of Issue</th>
+          <th scope="col">Date of Issue Corruption</th>
+          <th scope="col" data-sortable="true">Date of Expiry</th>
+          <th scope="col">Date of Expiry Corruption</th>
+          <th scope="col" data-sortable="true">Issuing Authority</th>
+          <th scope="col">Issuing Authority Corruption</th>
+          <th scope="col" data-sortable="true">License Number</th>
+          <th scope="col">License Number Corruption</th>
+          <th scope="col" data-sortable="true">Address</th>
+          <th scope="col">Address Corruption</th>
+          <th scope="col" data-sortable="true">Dataset</th>
+          <th data-checkbox="true"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in data %}
+        <tr>
+          <td>{{ entry.0 }}</td>
+          <td class="{% if entry.2 == "1" %} table-danger {% endif %}">
+            {{ entry.1 }}
+          </td>
+          <td>{{ entry.2 }}</td>
+          <td class="{% if entry.4 == "1" %} table-danger {% endif %}">
+            {{ entry.3 }}
+          </td>
+          <td>{{ entry.4 }}</td>
+          <td class="{% if entry.6 == "1" %} table-danger {% endif %}">
+            {{ entry.5 }}
+          </td>
+          <td>{{ entry.6 }}</td>
+          <td class="{% if entry.8 == "1" %} table-danger {% endif %}">
+            {{ entry.7 }}
+          </td>
+          <td>{{ entry.8 }}</td>
+          <td class="{% if entry.10 == "1" %} table-danger {% endif %}">
+            {{ entry.9 }}
+          </td>
+          <td>{{ entry.10 }}</td>
+          <td class="{% if entry.12 == "1" %} table-danger {% endif %}">
+            {{ entry.11 }}
+          </td>
+          <td>{{ entry.12 }}</td>
+          <td class="{% if entry.14 == "1" %} table-danger {% endif %}">
+            {{ entry.13 }}
+          </td>
+          <td>{{ entry.14 }}</td>
+          <td class="{% if entry.16 == "1" %} table-danger {% endif %}">
+            {{ entry.15 }}
+          </td>
+          <td>{{ entry.16 }}</td>
+          <td class="{% if entry.18 == "1" %} table-danger {% endif %}">
+            {{ entry.17 }}
+          </td>
+          <td>{{ entry.18 }}</td>
+          <td class="{% if entry.20 == "1" %} table-danger {% endif %}">
+            {{ entry.19 }}
+          </td>
+          <td>{{ entry.20 }}</td>
+          <td>{{ entry.21 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
   <script>
     $(document).ready(function () {
       $("#license_data_table").bootstrapTable();
